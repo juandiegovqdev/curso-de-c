@@ -6,9 +6,11 @@
 
 void abrirPrimeraClase();
 
+/*
 void main(){
     abrirPrimeraClase();
 }
+*/
 
 void abrirPrimeraClase(){
     system("open https://www.youtube.com/watch?v=C0UiG1uYgYQ&feature=youtu.be");
