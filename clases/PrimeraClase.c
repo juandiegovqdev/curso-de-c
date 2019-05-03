@@ -1,7 +1,11 @@
+//
+// Created by Juan Villalobos Quiros on 02/05/2019.
+//
+
 #include <stdio.h> //
 #include <string.h> //
 #include <math.h> //
-#include <stdbool.h> // librería para declarar true y false.
+#include <stdbool.h> // Librería para declarar true y false.
 #include <stdint.h>
 #include <stdlib.h>
 
