@@ -27,7 +27,7 @@
 // tipo bool de manera manual.
 typedef int booleano;
 
-int main(){
+int primeraClase(){
     printf("---------------------------\n");
     printf("Primera clase: C\n");
     printf("Alumno: Juan Diego Villalobos Quirós\n");
