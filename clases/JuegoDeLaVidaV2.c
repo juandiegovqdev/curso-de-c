@@ -21,7 +21,6 @@ void main() {
             {0, 0, 0, 0, 0}
     };
     bool mundo_b[TAM_X][TAM_Y];
-
     int vecinasVivas = 0;
     for (int i = 1; i < TAM_X - 1; i++) {
         for (int j = 1; j < TAM_Y - 1; j++) {
@@ -29,14 +28,11 @@ void main() {
             vecinasVivas += mundo_a[i - 1][j - 1];
             vecinasVivas += mundo_a[i - 1][j + 0];
             vecinasVivas += mundo_a[i - 1][j + 1];
-
             vecinasVivas += mundo_a[i + 0][j - 1];
             vecinasVivas += mundo_a[i + 0][j + 1];
-
             vecinasVivas += mundo_a[i + 1][j - 1];
             vecinasVivas += mundo_a[i + 1][j + 0];
             vecinasVivas += mundo_a[i + 1][j + 1];
-
             if (mundo_a[i][j]) {
                 mundo_b[i][j] = (vecinasVivas == 3) || (vecinasVivas == 2);
             } else {
@@ -44,7 +40,6 @@ void main() {
             }
         }
     }
-
     // Imprimir mundo
     for (int i = 0; i < TAM_X; i++) {
         for (int j = 0; j < TAM_Y; j++) {
