@@ -7,44 +7,38 @@
 #include <stdbool.h>
 #include "Plantilla_gol.h"
 
-#define TAM_X 5
-#define TAM_Y 5
-
-void gol_init(bool[ *][ *]);
-
-void gol_print(bool[ *][ *]);
-
-void gol_step(bool[ *][ *], bool[ *][ *]);
-
-int gol_count_neighbors(bool[ *][ *]);
-
-bool gol_get_cell(bool[ *][ *], int, int);
-
-void gol_copy(bool[ *][ *], bool[ *][ *]);
-
 int main() {
     int i = 0;
     // TODO: Declara dos mundos
-    bool mundo_a[TAM_X][TAM_Y];/* = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 1, 1, 1, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0}
-    };*/
-
+    bool mundo_a[TAM_X][TAM_Y];
     bool mundo_b[TAM_X][TAM_Y];
 
     // TODO: inicializa el mundo
-    /*
-    mundo_a[TAM_X][TAM_Y] = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 1, 1, 1, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0}
-    };
-    */
+    mundo_a[0][0] = 0;
+    mundo_a[0][1] = 0;
+    mundo_a[0][2] = 0;
+    mundo_a[0][3] = 0;
+    mundo_a[0][4] = 0;
+    mundo_a[1][0] = 0;
+    mundo_a[1][1] = 0;
+    mundo_a[1][2] = 0;
+    mundo_a[1][3] = 0;
+    mundo_a[1][4] = 0;
+    mundo_a[2][0] = 0;
+    mundo_a[2][1] = 1;
+    mundo_a[2][2] = 1;
+    mundo_a[2][3] = 1;
+    mundo_a[2][4] = 0;
+    mundo_a[3][0] = 0;
+    mundo_a[3][1] = 0;
+    mundo_a[3][2] = 0;
+    mundo_a[3][3] = 0;
+    mundo_a[3][4] = 0;
+    mundo_a[4][0] = 0;
+    mundo_a[4][1] = 0;
+    mundo_a[4][2] = 0;
+    mundo_a[4][3] = 0;
+    mundo_a[4][4] = 0;
 
     do {
         printf("\033cIteration %d\n", i++);
@@ -57,6 +51,11 @@ int main() {
 
 void gol_init(bool mundo_a[TAM_X][TAM_Y]) {
     // TODO: Poner el mundo a false
+    for (int i = 0; i < TAM_X; i++) {
+        for (int j = 0; j < TAM_Y; j++) {
+            mundo_a[i][j] == '.';
+        }
+    }
 
     /* TODO: Inicializar con el patrón del glider:
      *           . # .
@@ -87,7 +86,7 @@ void gol_print(bool mundo_a[TAM_X][TAM_Y]) {
     }
 }
 
-void gol_step(bool mundo_a, bool mundo_b) {
+void gol_step(bool mundo_a[TAM_X][TAM_Y], bool mundo_b[TAM_X][TAM_Y]) {
     /*
      * TODO:
      * - Recorrer el mundo célula por célula comprobando si nace, sobrevive
@@ -100,24 +99,50 @@ void gol_step(bool mundo_a, bool mundo_b) {
      */
 }
 
-int gol_count_neighbors(bool mundo /* Recibo un mundo y unas coordenadas */) {
+int gol_count_neighbors(bool mundo[TAM_X][TAM_Y], int x, int y) {
     // Devuelve el número de vecinos
+    int i = 0;
+    if (mundo[x - 1][y + 1]) {
+        i++;
+    }
+    if (mundo[x][y + 1]) {
+        i++;
+    }
+    if (mundo[x + 1][y + 1]) {
+        i++;
+    }
+    if (mundo[x - 1][y]) {
+        i++;
+    }
+    if (mundo[x + 1][y]) {
+        i++;
+    }
+    if (mundo[x - 1][y - 1]) {
+        i++;
+    }
+    if (mundo[x][y - 1]) {
+        i++;
+    }
+    if (mundo[x + 1][y - 1]) {
+        i++;
+    }
+    return i;
 }
 
-bool gol_get_cell(
-
-&
-bool mundo[][],
-int x,
-int y /* Recibo un mundo y unas coordenadas */) {
+bool gol_get_cell(bool mundo[TAM_X][TAM_Y], int x, int y) {
 /*
  * TODO: Devuelve el estado de la célula de posición indicada
  * (¡cuidado con los límites del array!)
  */
-return mundo[x][y];
+    if (x > TAM_X || y > TAM_Y) {
+        printf("No se puede obtener el estado de la célula de la posición indicada.");
+        return 0;
+    } else {
+        return mundo[x][y];
+    }
 }
 
-void gol_copy(bool mundo_a, bool mundo_b) {
+void gol_copy(bool mundo_a[TAM_X][TAM_Y], bool mundo_b[TAM_X][TAM_Y]) {
     // TODO: copia el mundo segundo mundo sobre el primero
     for (int i = 0; i < TAM_X; i++) {
         for (int j = 0; i < TAM_Y; j++) {
