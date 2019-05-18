@@ -44,6 +44,12 @@ int main() {
         printf("\033cIteration %d\n", i++);
         // TODO: Imprime el mundo
         // TODO: Itera
+        for (i = 0; i < TAM_X; i++) {
+            for (int j = 0; j < TAM_Y; j++) {
+                printf("%c ", mundo_a[i][j] ? '#' : '.');
+            }
+            printf("\n");
+        }
     } while (getchar() != 'q');
 
     return EXIT_SUCCESS;
